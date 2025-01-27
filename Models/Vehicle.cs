@@ -17,12 +17,12 @@ namespace DrivingSchoolApp.Models
         public string Model { get; set; } = string.Empty; // Inițializare implicită
 
         [Required(ErrorMessage = "License plate is required")]
-        [StringLength(20, ErrorMessage = "Licenste plate cannot be longer than 20 characters")]
+        [StringLength(20, ErrorMessage = "License plate cannot be longer than 20 characters")]
         [Display(Name = "License Plate")]
         public string LicensePlate { get; set; } = string.Empty; // Inițializare implicită
 
-        [StringLength(10, ErrorMessage = "Driver's license type cannot be longer than 10 characters")]
-        [Display(Name = "Type")]
+        [Required(ErrorMessage = "Type is required.")]
+        [StringLength(5, ErrorMessage = "Type must be A, A1, A2, B, or B1.")]
         public string? Type { get; set; } // Opțional
 
         // Relația: Un vehicul poate fi folosit în mai multe lecții
