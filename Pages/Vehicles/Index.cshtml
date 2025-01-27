@@ -1,0 +1,61 @@
+﻿@page
+@model DrivingSchoolApp.Pages.Vehicles.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Vehicles</h1>
+
+@if (User.IsInRole("Instructor"))
+{
+    <p>
+        <a asp-page="Create" class="btn btn-primary">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].LicensePlate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].Type)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vehicle) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicensePlate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+                @if (User.IsInRole("Instructor"))
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                    <span>|</span>
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    <span>|</span>
+                }
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿@page
+@model DrivingSchoolApp.Pages.Lessons.CreateModel
+@{
+    ViewData["Title"] = "Create Lesson";
+}
+<h1>Create Lesson</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Data și ora lecției -->
+            <div class="form-group">
+                <label asp-for="Lesson.DateTime" class="control-label"></label>
+                <input asp-for="Lesson.DateTime" class="form-control" />
+                <span asp-validation-for="Lesson.DateTime" class="text-danger"></span>
+            </div>
+
+            <!-- Selectează studentul -->
+            <div class="form-group">
+                <label asp-for="Lesson.StudentID" class="control-label"></label>
+                <select asp-for="Lesson.StudentID" class="form-control" asp-items="ViewBag.StudentID">
+                    <option value="">-- Select a student --</option>
+                </select>
+                <span asp-validation-for="Lesson.StudentID" class="text-danger"></span>
+            </div>
+
+            <!-- Selectează instructorul -->
+            <div class="form-group">
+                <label asp-for="Lesson.InstructorID" class="control-label"></label>
+                <select asp-for="Lesson.InstructorID" class="form-control" asp-items="ViewBag.InstructorID">
+                    <option value="">-- Select an instructor --</option>
+                </select>
+                <span asp-validation-for="Lesson.InstructorID" class="text-danger"></span>
+            </div>
+
+            <!-- Selectează vehiculul -->
+            <div class="form-group">
+                <label asp-for="Lesson.VehicleID" class="control-label"></label>
+                <select asp-for="Lesson.VehicleID" class="form-control" asp-items="ViewBag.VehicleID">
+                    <option value="">-- Select a vehicle --</option>
+                </select>
+                <span asp-validation-for="Lesson.VehicleID" class="text-danger"></span>
+            </div>
+
+            <!-- Butonul de creare -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+
